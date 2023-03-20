@@ -17,7 +17,7 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
-  // loop over WIDTH and Height to make rows and columns
+  // loops over WIDTH and HEIGHT to create cells with null values for rows and columns.
   for (let y = 0; y < HEIGHT; y++) {
     let row = [];
     for(let x =0; x < WIDTH; x++) {
@@ -34,7 +34,7 @@ function makeHtmlBoard() {
   const board = document.getElementById('board');
 
   // TODO: add comment for this code
-  // create and append a clickable top row on board for player column selection to drop game piece 
+  // creates and appends a clickable top row on board for player column selection to drop game pieces. 
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
@@ -47,7 +47,7 @@ function makeHtmlBoard() {
   board.append(top);
 
   // TODO: add comment for this code
-  // creates a table with 'HEIGHT' rows and and 'WIDTH' cells in each row, with each cell haviing a 'id' attribute based on position. 
+  // creates a table with HEIGHT and WIDTH cells with id attributes based on position on board. 
   for (let y = 0; y < HEIGHT; y++) {  
     const row = document.createElement("tr");
     for (let x = 0; x < WIDTH; x++) {
@@ -75,7 +75,6 @@ function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
   const piece = document.createElement('div');
   piece.classList.add('piece', `p${currPlayer}`);
-  piece.style.top = -50 * (y + 2);
 
   const spot = document.getElementById(`${y}-${x}`);
   spot.append(piece);
@@ -140,7 +139,7 @@ function checkForWin() {
   }
 
   // TODO: read and understand this code. Add comments to help you.
-
+  // checks all cells horizontally, vertically, and diagnally for 4 cells in a row with player piece for win. 
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
       const horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
